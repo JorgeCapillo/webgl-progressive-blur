@@ -1,0 +1,20 @@
+@mixin underline() {
+  position: relative;
+  &::after{
+    content: '';
+    width: 100%;
+    height: 1px;
+    position: absolute;
+    bottom: 0px;
+    left: 0;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: 0% 100%;
+    transition: transform 1s cubic-bezier(0.35, 0.42, 0, 1);
+  }
+  &:hover {
+    &::after {
+      transform: scaleX(1);
+    }
+  }
+}
