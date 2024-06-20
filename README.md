@@ -34,7 +34,7 @@ npm run build
 
 ## Misc
 
-Follow Jorge Toloza: [Website](https://jorgetoloza.co), [Instagram](https://instagram.com/jorgecapillo), [Twitter](https://twitter.com/jorgecapillo), [GitHub](https://github.com/jorgecapillo) 
+Follow Jorge Toloza: [Website](https://jorgetoloza.co), [Instagram](https://instagram.com/jorgecapillo), [X](https://twitter.com/jorgecapillo), [GitHub](https://github.com/jorgecapillo) 
 
 Follow Codrops: [X](http://www.X.com/codrops), [Facebook](http://www.facebook.com/codrops), [GitHub](https://github.com/codrops), [Instagram](https://www.instagram.com/codropsss/)
 
