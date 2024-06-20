@@ -6,6 +6,8 @@
   top: 0;
   left: 0;
   z-index: 99;
+  mix-blend-mode: difference;
+  color: white;
   &, &-left, &-right {
     display: flex;
     align-items: center;

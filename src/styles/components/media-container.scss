@@ -1,0 +1,21 @@
+.media-container {
+  width: 100%;
+  display: inline-flex;
+  flex-direction: column;
+  .media {
+    display: inline-flex;
+    opacity: 0.2;
+    img {
+      width: 100%;
+      visibility: hidden;
+    }
+  }
+  small {
+    display: block;
+    text-align: center;
+    font-family: $font-serif;
+    font-weight: normal;
+    line-height: 0.8;
+    margin-top: 10px;
+  }
+}

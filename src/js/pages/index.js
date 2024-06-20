@@ -2,7 +2,7 @@ import '../../styles/index.scss'
 import '../../styles/pages/index.scss'
 import Lenis from 'lenis';
 
-import Util from '../util/util.js';
+import GL from '../components/GL.js';
 
 export default class Index {
   constructor(options) {
@@ -14,9 +14,11 @@ export default class Index {
       this.lenis.raf(time)
       requestAnimationFrame(raf)
     }
-
     requestAnimationFrame(raf)
-
+    this.gl = new GL();
+    this.lenis.on('scroll', (e) => {
+      this.gl.onScroll(e)
+    })
   }
 }
 window.addEventListener('load', () => {
