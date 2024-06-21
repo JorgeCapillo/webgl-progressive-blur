@@ -34,8 +34,9 @@ export default class Media {
         tMap: { value: texture },
         uPlaneSize: { value: [0, 0] },
         uImageSize: { value: [0, 0] },
-        uViewportSizes: { value: [this.viewport.width, this.viewport.height] },
-        uTime: { value: 100 * Math.random() }
+        uViewportSize: { value: [this.viewport.width, this.viewport.height] },
+        uTime: { value: 100 * Math.random() },
+        uScroll: { value: 0 }
       },
       transparent: true
     })
@@ -59,6 +60,7 @@ export default class Media {
   }
   onScroll (scroll) {
     this.scroll = scroll
+    this.program.uniforms.uScroll.value = (this.scroll / this.screen.height) * this.viewport.height
     this.setY(this.y)
   }
   update () {
@@ -85,7 +87,7 @@ export default class Media {
 
     if (viewport) {
       this.viewport = viewport
-      this.plane.program.uniforms.uViewportSizes.value = [this.viewport.width, this.viewport.height]
+      this.plane.program.uniforms.uViewportSize.value = [this.viewport.width, this.viewport.height]
     }
     this.setScale()
 

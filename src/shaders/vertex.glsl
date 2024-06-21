@@ -7,11 +7,17 @@ uniform mat4 modelViewMatrix;
 uniform mat4 projectionMatrix;
 
 uniform float uTime;
+uniform float uScroll;
+
 
 varying vec2 vUv;
+varying float vTime;
+varying vec3 vPosition;
 
 void main() {
   vUv = uv;
+  vTime = uTime;
+  vPosition = position;
 
   vec3 p = position;
 
