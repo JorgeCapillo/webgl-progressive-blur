@@ -20,7 +20,7 @@ float rand(vec2 co){
 }
 vec3 blur2(vec2 uv, sampler2D image, float bluramount){
   vec3 blurred_image = vec3(0.);
-  float d = smoothstep(0.8, 0.0, (gl_FragCoord.y / uViewportSize.y) / uViewportSize.y);
+  float d = smoothstep(0.8, 0.0, 3.2 - (gl_FragCoord.y / uViewportSize.y) / uViewportSize.y) + smoothstep(0.8, 0.0, (gl_FragCoord.y / uViewportSize.y) / uViewportSize.y);
   #define repeats 40.
   for (float i = 0.; i < repeats; i++) { 
     vec2 q = vec2(cos(degrees((i/repeats)*360.)),sin(degrees((i/repeats)*360.))) *  (rand(vec2(i,uv.x+uv.y))+bluramount); 
