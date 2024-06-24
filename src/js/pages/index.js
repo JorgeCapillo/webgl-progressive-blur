@@ -6,7 +6,6 @@ import GL from '../components/GL.js';
 
 export default class Index {
   constructor(options) {
-    console.log('Index page');
     this.lenis = new Lenis();
     this.lenis.on('scroll', (e) => {
     })
