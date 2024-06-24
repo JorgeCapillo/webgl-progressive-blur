@@ -14,6 +14,7 @@ export default class Media {
     this.image = image
     this.parent = image.parentElement
     this.scroll = 0
+    this.blurStrength = 1
 
     this.createShader()
     this.createMesh()
@@ -36,7 +37,8 @@ export default class Media {
         uImageSize: { value: [0, 0] },
         uViewportSize: { value: [this.viewport.width, this.viewport.height] },
         uTime: { value: 100 * Math.random() },
-        uScroll: { value: 0 }
+        uScroll: { value: 0 },
+        uBlurStrength: { value: this.blurStrength },
       },
       transparent: true
     })
@@ -65,10 +67,13 @@ export default class Media {
   }
   update () {
     this.program.uniforms.uTime.value += 0.04
+    this.program.uniforms.uBlurStrength.value = this.blurStrength
   }
-  setScale () {
-    this.plane.scale.x = this.viewport.width * this.parent.offsetWidth / this.screen.width
-    this.plane.scale.y = this.viewport.height * this.parent.offsetHeight / this.screen.height
+  setScale (x, y) {
+    x = x || this.parent.offsetWidth
+    y = y || this.parent.offsetHeight
+    this.plane.scale.x = this.viewport.width * x / this.screen.width
+    this.plane.scale.y = this.viewport.height * y / this.screen.height
 
     this.plane.program.uniforms.uPlaneSize.value = [this.plane.scale.x, this.plane.scale.y]
   }

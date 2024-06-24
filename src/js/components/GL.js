@@ -80,12 +80,26 @@ export default class GL {
         screen: this.screen,
         viewport: this.viewport
       }))
+      this.onScroll({scroll: window.scrollY})
     }
+  }
+  easeInOut(t) {
+    return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t
   }
   onScroll({scroll}) {
     if (this.medias) {
       this.medias.forEach(media => media.onScroll(scroll))
+      this.checkHeroProgress(scroll)
     }
+  }
+  checkHeroProgress(scroll) {
+    const p = this.easeInOut(Math.min(scroll / (this.screen.height * 0.5), 1))
+    let height = this.medias[0].parent.offsetHeight
+    const offsetTop = this.medias[0].parent.offsetTop
+    let scale = (this.screen.height - offsetTop) / height
+    scale *= 1.15
+    this.medias[0].setScale(null, height - height * (1 - p) * (1 - scale))
+    this.medias[0].blurStrength = 1 - 0.8 * (1 - p)
   }
   update() {
     if (this.medias) {

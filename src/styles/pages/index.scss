@@ -1,4 +1,7 @@
 @import '../util';
+#main {
+  position: relative;
+}
 section {
   margin: 200px auto;
   padding: 0 var(--margin);
@@ -85,6 +88,65 @@ section {
       .media {
         aspect-ratio: 316 / 444;
       }
+    }
+  }
+}
+#section-centered {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  .media-container:first-child {
+    width: 20%;
+    .media {
+      aspect-ratio: 1 / 1;
+    }
+  }
+  .media-container:nth-child(2) {
+    width: 61.8033989%;
+    margin-top: var(--margin);
+    .media {
+      aspect-ratio: 376 / 400;
+    }
+  }
+}
+#list-section {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  ul {
+    font-family: $font-serif;
+    list-style: none;
+    &:not(:last-child) {
+      margin-right: 86px;
+    }
+  }
+}
+#section-4 {
+  height: 100lvh;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .media-container {
+    width: 100%;
+    max-width: 380px;
+    .media {
+      aspect-ratio: 376 / 530;
+    }
+  }
+}
+#footer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  left: 0;
+  bottom: var(--margin);
+  a {
+    @include underline;
+    &:not(:last-child) {
+      margin-right: 20px;
     }
   }
 }

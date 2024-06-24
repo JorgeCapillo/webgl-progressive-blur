@@ -3,6 +3,7 @@ precision highp float;
 uniform vec2 uImageSize;
 uniform vec2 uPlaneSize;
 uniform vec2 uViewportSize;
+uniform float uBlurStrength;
 uniform sampler2D tMap;
 
 varying vec2 vUv;
@@ -18,9 +19,9 @@ vec3 draw(sampler2D image, vec2 uv) {
 float rand(vec2 co){
   return fract(sin(dot(co.xy ,vec2(12.9898,78.233))) * 43758.5453);
 }
-vec3 blur2(vec2 uv, sampler2D image, float bluramount){
+vec3 blur(vec2 uv, sampler2D image, float bluramount){
   vec3 blurred_image = vec3(0.);
-  float d = smoothstep(0.8, 0.0, 3.2 - (gl_FragCoord.y / uViewportSize.y) / uViewportSize.y) + smoothstep(0.8, 0.0, (gl_FragCoord.y / uViewportSize.y) / uViewportSize.y);
+  float d = smoothstep(0.8, 0.0, 3.4 - (gl_FragCoord.y / uViewportSize.y) / uViewportSize.y) * uBlurStrength + smoothstep(0.8, 0.0, (gl_FragCoord.y / uViewportSize.y) / uViewportSize.y) * uBlurStrength;
   #define repeats 40.
   for (float i = 0.; i < repeats; i++) { 
     vec2 q = vec2(cos(degrees((i/repeats)*360.)),sin(degrees((i/repeats)*360.))) *  (rand(vec2(i,uv.x+uv.y))+bluramount); 
@@ -48,7 +49,7 @@ void main() {
   float ta = t * 0.654321;
   float tb = t * (ta * 0.123456);
   
-  vec4 final = vec4(blur2(uv, tMap, 0.08), 1.);
+  vec4 final = vec4(blur(uv, tMap, 0.08), 1.);
 
   vec4 noise = vec4(1. - noise21(uv, ta, tb));
   float noiseF = 0.08;
