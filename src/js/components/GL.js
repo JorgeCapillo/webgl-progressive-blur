@@ -93,7 +93,7 @@ export default class GL {
     }
   }
   checkHeroProgress(scroll) {
-    const p = this.easeInOut(Math.min(scroll / (this.screen.height * 0.5), 1))
+    const p = this.easeInOut(Math.min(scroll / (this.screen.height * 0.57), 1))
     let height = this.medias[0].parent.offsetHeight
     const offsetTop = this.medias[0].parent.offsetTop
     let scale = (this.screen.height - offsetTop) / height
