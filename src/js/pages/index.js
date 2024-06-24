@@ -19,6 +19,18 @@ export default class Index {
     this.lenis.on('scroll', (e) => {
       this.gl.onScroll(e)
     })
+    const items = document.querySelectorAll('#list-section li');
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    });
+    items.forEach(item => {
+      observer.observe(item);
+    });
   }
 }
 window.addEventListener('load', () => {

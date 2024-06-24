@@ -121,6 +121,19 @@ section {
       margin-right: 86px;
     }
   }
+  li {
+    will-change: transform, filter;
+    transition: transform 2.5s $in-out, filter 2s $in-out;
+    @for $i from 1 through 5 {
+      &:nth-child(#{$i}) {
+        transition-delay: #{$i * 0.2}s;
+      }
+    }
+    &:not(.is-visible) {
+      filter: blur(5px);
+      transform: scale(1.4) translateY(40px);
+    }
+  }
 }
 #section-4 {
   height: 100lvh;
