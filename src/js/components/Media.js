@@ -3,16 +3,15 @@ import vertex from '../../shaders/vertex.glsl';
 import fragment from '../../shaders/fragment.glsl';
 
 export default class Media {
-  constructor ({ gl, geometry, scene, renderer, screen, viewport, index, image }) {
+  constructor ({ gl, geometry, scene, renderer, screen, viewport, $el, img }) {
     this.gl = gl
     this.geometry = geometry
     this.scene = scene
     this.renderer = renderer
     this.screen = screen
     this.viewport = viewport
-    this.index = index
-    this.image = image
-    this.parent = image.parentElement
+    this.img = img
+    this.$el = $el
     this.scroll = 0
     this.blurStrength = 1
 
@@ -37,7 +36,6 @@ export default class Media {
         uImageSize: { value: [0, 0] },
         uViewportSize: { value: [this.viewport.width, this.viewport.height] },
         uTime: { value: 100 * Math.random() },
-        uScroll: { value: 0 },
         uBlurStrength: { value: this.blurStrength },
       },
       transparent: true
@@ -45,7 +43,7 @@ export default class Media {
 
     const image = new Image()
 
-    image.src = this.image.src
+    image.src = this.img.src
     image.onload = _ => {
       texture.image = image
 
@@ -62,7 +60,6 @@ export default class Media {
   }
   onScroll (scroll) {
     this.scroll = scroll
-    this.program.uniforms.uScroll.value = (this.scroll / this.screen.height) * this.viewport.height
     this.setY(this.y)
   }
   update () {
@@ -70,8 +67,8 @@ export default class Media {
     this.program.uniforms.uBlurStrength.value = this.blurStrength
   }
   setScale (x, y) {
-    x = x || this.parent.offsetWidth
-    y = y || this.parent.offsetHeight
+    x = x || this.$el.offsetWidth
+    y = y || this.$el.offsetHeight
     this.plane.scale.x = this.viewport.width * x / this.screen.width
     this.plane.scale.y = this.viewport.height * y / this.screen.height
 
@@ -96,7 +93,7 @@ export default class Media {
     }
     this.setScale()
 
-    this.setX(this.parent.offsetLeft)
-    this.setY(this.parent.offsetTop)
+    this.setX(this.$el.offsetLeft)
+    this.setY(this.$el.offsetTop)
   }
 }

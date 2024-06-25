@@ -3,7 +3,7 @@ import Media from './Media.js';
 
 export default class GL {
   constructor () {
-    this.images = [...document.querySelectorAll('.media img')]
+    this.images = [...document.querySelectorAll('.media')]
     
     this.createRenderer()
     this.createCamera()
@@ -25,7 +25,6 @@ export default class GL {
     })
 
     this.gl = this.renderer.gl
-    this.gl.clearColor(255, 255, 255, 0)
   }
   createCamera () {
     this.camera = new Camera(this.gl)
@@ -42,7 +41,7 @@ export default class GL {
     })
   }
   createMedias () {
-    this.medias = this.images.map((image, index) => {
+    this.medias = this.images.map(item => {
       return new Media({
         gl: this.gl,
         geometry: this.planeGeometry,
@@ -50,8 +49,8 @@ export default class GL {
         renderer: this.renderer,
         screen: this.screen,
         viewport: this.viewport,
-        index,
-        image
+        $el: item,
+        img: item.querySelector('img')
       })
     })
   }
@@ -94,8 +93,8 @@ export default class GL {
   }
   checkHeroProgress(scroll) {
     const p = this.easeInOut(Math.min(scroll / (this.screen.height * 0.57), 1))
-    let height = this.medias[0].parent.offsetHeight
-    const offsetTop = this.medias[0].parent.offsetTop
+    let height = this.medias[0].$el.offsetHeight
+    const offsetTop = this.medias[0].$el.offsetTop
     let scale = (this.screen.height - offsetTop) / height
     scale *= 1.15
     this.medias[0].setScale(null, height - height * (1 - p) * (1 - scale))

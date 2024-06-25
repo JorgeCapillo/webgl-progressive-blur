@@ -2,6 +2,14 @@
 #main {
   position: relative;
 }
+#nav, #footer {
+  opacity: 0;
+}
+.media-container {
+  small {
+    opacity: 0;
+  }
+}
 section {
   margin: 200px auto;
   padding: 0 var(--margin);
