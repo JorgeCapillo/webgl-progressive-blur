@@ -11,13 +11,14 @@
   box-sizing: border-box;
 }
 html {
-  background: $white;
+  background: $grey;
   color: $black;
 }
 body {
   font-family: $font-sans;
-  font-size: 12px;
-  font-weight: 300;
+  font-size: 13px;
+  font-weight: 400;
+  font-optical-sizing: auto;
   margin: 0;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;

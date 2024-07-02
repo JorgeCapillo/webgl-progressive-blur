@@ -91,15 +91,24 @@ export default class GL {
       this.checkHeroProgress(scroll)
     }
   }
+   
+  // Hero image animation
   checkHeroProgress(scroll) {
-    const p = this.easeInOut(Math.min(scroll / (this.screen.height * 0.57), 1))
-    let height = this.medias[0].$el.offsetHeight
-    const offsetTop = this.medias[0].$el.offsetTop
-    let scale = (this.screen.height - offsetTop) / height
-    scale *= 1.15
-    this.medias[0].setScale(null, height - height * (1 - p) * (1 - scale))
-    this.medias[0].blurStrength = 1 - 0.8 * (1 - p)
+    const p = this.easeInOut(Math.min(scroll / (this.screen.height * 0.57), 1));
+    
+    // Keep the original height of the element
+    let height = this.medias[0].$el.offsetHeight;
+    
+    // Calculate a very subtle scale factor
+    const scale = 1 + (0.05 * p); // Subtle scale up to 5%
+
+    // Apply the subtle scale and keep the height unchanged
+    this.medias[0].setScale(null, height * scale);
+
+    // Blur effect remains unchanged
+    this.medias[0].blurStrength = 1 - 0.8 * (1 - p);
   }
+  
   update() {
     if (this.medias) {
       this.medias.forEach(media => media.update())

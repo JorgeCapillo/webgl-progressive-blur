@@ -1,0 +1,56 @@
+.frame {
+  padding: 1rem 1.5rem;
+  position: fixed;
+  display: grid;
+  z-index: 1000;
+  width: 100%;
+  gap: 0.25rem;
+  pointer-events: none;
+  justify-items: start;
+  text-transform: uppercase;
+  grid-template-columns: auto 1fr;
+  grid-template-areas: 'back back' 'github archive' 'tags tags' 'sponsor sponsor';
+}
+
+.frame #cdawrap {
+  justify-self: start;
+}
+
+.frame a {
+  pointer-events: auto;
+}
+
+.frame__back {
+  grid-area: back;
+  justify-self: start;
+}
+
+.frame__archive {
+  grid-area: archive;
+  justify-self: start;
+}
+
+.frame__github {
+  grid-area: github;
+}
+
+.frame__tags {
+  grid-area: tags;
+  display: flex;
+  gap: 1rem;
+}
+
+@media screen and (min-width: 53em) {
+  .frame {
+    grid-row-gap: 1rem;
+    grid-column-gap: 4rem;
+    grid-template-columns: auto auto auto 1fr 1fr;
+    align-content: space-between;
+    grid-template-areas: 'back archive github tags sponsor';
+  }
+  .frame #cdawrap {
+    text-align: right;
+    justify-self: end;
+    max-width: 300px;
+  }
+}

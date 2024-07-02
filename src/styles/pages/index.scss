@@ -2,9 +2,6 @@
 #main {
   position: relative;
 }
-#nav, #footer {
-  opacity: 0;
-}
 .media-container {
   small {
     opacity: 0;
@@ -25,12 +22,13 @@ section {
   text-align: center;
   padding-top: 35dvh;
   h2 {
+    cursor: default;
     display: flex;
     flex-direction: column;
     align-items: center;
     font-weight: normal;
     margin-bottom: 40px;
-    font-size: 100px;
+    font-size: clamp(1.5rem, 6.5vw, 8rem);
     font-family: $font-serif;
     line-height: 1;
     & > * {
@@ -42,15 +40,17 @@ section {
       display: block;
     }
     small {
-      font-size: 0.0902em;
+      font-size: 0.175em;
     }
     span {
-      font-size: 0.3819em;
+      font-size: 0.5em;
+      text-transform: uppercase;
     }
     strong {
       font-family: $font-sans;
-      font-weight: 500;
-      line-height: 0.7;
+      font-weight: 600;
+      line-height: 0.9;
+      letter-spacing: -0.05em;
       text-transform: uppercase;
     }
   }
@@ -158,6 +158,7 @@ section {
   }
 }
 #footer {
+  text-transform: uppercase;
   width: 100%;
   display: flex;
   justify-content: center;

@@ -2,11 +2,11 @@
 
 WebGL implementation of a progressive blur effect using OGL by [Jorge Toloza](http://jorgetoloza.co).
 
-![Image Title](cover.jpg)
+![Image](https://tympanus.net/codrops/wp-content/uploads/2024/06/WebglProgressiveBlurFeatured.jpg)
 
-[Article on Codrops](https://tympanus.net/codrops/?p=)
+[Article on Codrops](https://tympanus.net/codrops/?p=78847)
 
-[Demo](http://tympanus.net/Development/.../)
+[Demo](http://tympanus.net/Tutorials/WebGLProgressiveBlur/)
 
 ## Installation
 
@@ -41,4 +41,4 @@ Follow Codrops: [X](http://www.X.com/codrops), [Facebook](http://www.facebook.co
 ## License
 [MIT](LICENSE)
 
-Made with :blue_heart:  by [Codrops](http://www.codrops.com)
+Made with :blue_heart:  by [Jorge Toloza](https://jorgetoloza.co) and [Codrops](http://www.codrops.com)
