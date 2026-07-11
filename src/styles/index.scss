@@ -1,5 +1,7 @@
-@import './grid';
-@import './components';
+@use './util' as *;
+
+@use './grid';
+@use './components';
 
 * {
   margin: 0;
